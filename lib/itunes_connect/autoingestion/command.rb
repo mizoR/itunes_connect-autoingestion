@@ -9,12 +9,6 @@ module ItunesConnect
     class Error < StandardError
     end
 
-    class FileNotFound < Error
-    end
-
-    class ExitError < Error
-    end
-
     class Command
       class Builder
         extend Forwardable
@@ -82,16 +76,14 @@ module ItunesConnect
       def run
         Builder.new(self).build do |command|
           out = `#{command}`
-
-          raise ExitError.new(out) if $?.exitstatus != 0
-
-          # NOTE: javaコマンドのエラーになってもステータスコードは 0が返ってしまっている
+          exitstatus = $?.exitstatus
           gz_file, _ = out.split
-          raise FileNotFound.new(out) if !File.exist?(gz_file)
 
-          Zlib::GzipReader.open(gz_file) {|gz|
-            Result.new gz.read
-          }
+          if (exitstatus == 0) && File.exist?(gz_file)
+            Zlib::GzipReader.open(gz_file) {|gz| Result.new(gz.read)}
+          else
+            raise Error.new(out)
+          end
         end
       end
     end
