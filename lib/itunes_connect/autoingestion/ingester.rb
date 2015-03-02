@@ -5,7 +5,7 @@ module ItunesConnect
     class Ingester
       attr_reader :username, :password, :vendor_id, :report_type, :report_subtype, :date_type, :date
 
-      def initialize(username: , password: , vendor_id: , report_type: 'Sales', report_subtype: 'Summary', date_type: 'Daily', date: Date.today)
+      def initialize(username: , password: , vendor_id: , report_type: 'Sales', report_subtype: 'Summary', date_type: 'Daily', date: (Date.today - 1))
         @username = username
         @password = password
         @vendor_id = vendor_id
