@@ -47,7 +47,7 @@ module ItunesConnect
             ingester.report_type,
             ingester.date_type,
             ingester.report_subtype,
-            ingester.date,
+            ingester.date.strftime("%Y%m%d"),
           ]
 
           command = cmds.map(&:to_s).map(&:shellescape).join(' ')
