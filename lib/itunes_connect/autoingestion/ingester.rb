@@ -16,7 +16,13 @@ module ItunesConnect
       end
 
       def ingest
-        Command.new(self).run
+        strategy.new(self).run
+      end
+
+      private
+
+      def strategy
+        Command
       end
     end
   end
