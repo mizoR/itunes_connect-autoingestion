@@ -74,6 +74,8 @@ module ItunesConnect
       end
 
       def run
+        gz_file = nil
+
         Builder.new(self).build do |command|
           out = `#{command}`
           exitstatus = $?.exitstatus
@@ -84,6 +86,10 @@ module ItunesConnect
           else
             raise Error.new(out)
           end
+        end
+      ensure
+        if gz_file
+          File.delete gz_file rescue nil
         end
       end
     end
