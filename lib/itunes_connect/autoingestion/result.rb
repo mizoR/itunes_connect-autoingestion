@@ -22,8 +22,9 @@ module ItunesConnect
     end
 
     class Result
-      def initialize(row_data)
-        @rows = parse(row_data)
+      def initialize(raw_data)
+        @raw_data = raw_data
+        @rows = parse(raw_data)
       end
 
       def each
@@ -32,10 +33,14 @@ module ItunesConnect
         end
       end
 
+      def to_s
+        @raw_data
+      end
+
       private
 
-      def parse(row_data)
-        ::CSV.new(row_data, col_sep: "\t", headers: true).map {|row| Data.new(row)}
+      def parse(raw_data)
+        ::CSV.new(raw_data, col_sep: "\t", headers: true).map {|row| Data.new(row)}
       end
     end
   end

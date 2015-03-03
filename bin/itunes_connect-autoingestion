@@ -4,5 +4,5 @@ $LOAD_PATH << File.join(__dir__, '..', 'lib')
 
 require 'itunes_connect/autoingestion/cli'
 
-ItunesConnect::Autoingestion::Cli.new(ARGV).run
+puts ItunesConnect::Autoingestion::Cli.new(ARGV).run
 
