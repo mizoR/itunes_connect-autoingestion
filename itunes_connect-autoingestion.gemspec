@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "itunes_connect-autoingestion"
   spec.version       = ItunesConnect::Autoingestion::VERSION
   spec.authors       = ["mizokami"]
-  spec.email         = ["suzunatsu@yahoo.com"]
+  spec.email         = ["r.mizokami@gmail.com"]
   spec.summary       = %q{iTunes Connect Autoingestion}
   spec.homepage      = ""
   spec.license       = "MIT"
