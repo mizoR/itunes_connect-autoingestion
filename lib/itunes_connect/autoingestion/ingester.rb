@@ -1,5 +1,3 @@
-require "itunes_connect/autoingestion/command"
-
 module ItunesConnect
   module Autoingestion
     class Ingester

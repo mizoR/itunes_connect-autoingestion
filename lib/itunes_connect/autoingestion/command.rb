@@ -1,4 +1,3 @@
-require "itunes_connect/autoingestion/result"
 require "shellwords"
 require "zlib"
 require "forwardable"
@@ -6,9 +5,6 @@ require "tempfile"
 
 module ItunesConnect
   module Autoingestion
-    class Error < StandardError
-    end
-
     class Command
       class Builder
         extend Forwardable
