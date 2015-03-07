@@ -11,6 +11,11 @@ module ItunesConnect
         end
       end
 
+      def respond_to?(method_name)
+        method_name = method_name.to_s
+        @data.include?(method_name) || super
+      end
+
       def method_missing(method_name)
         method_name = method_name.to_s
         if @data.include?(method_name)
